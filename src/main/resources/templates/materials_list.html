@@ -1,0 +1,496 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Materials'List - SmartLocker</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="../img/icon.ico" type="image/x-icon"/>
+	
+	<!-- Fonts and icons -->
+	<script src="../js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/atlantis.min.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../css/demo.css">
+
+</head>
+<body data-background-color="dark">
+	<div class="wrapper sidebar_minimize">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="blue">
+				
+				<a href="../index.html" class="logo">
+					<img src="../img/smartlocker.png" alt="navbar brand" class="navbar-brand">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue">
+				
+				<div class="container-fluid">
+					<div class="collapse" id="search-nav">
+						<form class="navbar-left navbar-form nav-search mr-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pr-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Search ..." class="form-control">
+							</div>
+						</form>
+					</div>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item dropdown hidden-caret">
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+								<div class="avatar-sm">
+									<img src="../img/ar.jpeg" alt="..." class="avatar-img rounded-circle">
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+		<!-- Sidebar -->
+				<div class="sidebar"  data-background-color="dark2">			
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+				<div class="user">
+						<div class="avatar-sm float-left mr-2">
+							<img src="../img/logo.jpg" alt="..." class="avatar-img rounded-circle">
+						</div>
+						<div class="info">
+							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span th:text="${nom}"></span>
+									
+									<span
+									class="user-level">Administrator</span>
+									<span class="caret"></span>
+								
+							</a>
+							<div class="clearfix"></div>
+
+							<div class="collapse in" id="collapseExample">
+								<ul class="nav">
+									<li>
+										<a th:href="@{/user_profile}">
+											<span class="link-collapse">Edit Profile</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/user_card}">
+											<span class="link-collapse">My Card</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<ul class="nav nav-primary">
+						<li class="nav-item active"><a 
+							th:href="@{/indexAdmin}" class="collapsed" aria-expanded="false"> <i
+								class="fas fa-home"></i>
+								<p>Our Materials</p>
+						</a></li>
+						<li class="nav-section"><span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+						</span>
+							<h4 class="text-section">Actions</h4></li>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-shopping-basket"></i>
+								<p>Borrowing Management</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									<li>
+										<a th:href="@{/new_borrowing}">
+											<span class="sub-item">New Borrowing</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/return_materialAdmin}">
+											<span class="sub-item">Return Materials</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/new_requestAdmin}">
+											<span class="sub-item">Request Material</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item "><a 
+							th:href="@{/lock}" > <i class="fas fa-minus-square"></i>
+								<p>Locker State</p> 
+						</a></li>
+						<li class="nav-item"><a 
+							th:href="@{/materials_list}" > <i class="fas fa-th"></i>
+								<p>Material Management</p> 
+						</a></li>
+						<li class="nav-item"><a  th:href="@{/users_list}">
+								<i class=" fas fa-users"></i>
+								<p>User Management</p> 
+						</a></li>
+						<li class="nav-item"><a th:href="@{/borrowing_list}">
+								<i class="fas fa-list-alt"></i>
+								<p>Borrowing List</p> 
+						</a></li>
+						<li class="nav-item"><a th:href="@{/returned_materials}">
+								<i class="fas fa-layer-group"></i>
+								<p>Returned Materials List</p>
+						</a></li>
+						<li class="nav-item"><a th:href="@{/paniers_users}">
+								<i class="fas fa-shopping-cart"></i>
+								<p>Carts' List</p>
+						</a></li>
+							<li class="nav-item"><a th:href="@{/demandes_list}">
+								<i class="fas fa-tasks"></i>
+								<p>Requests List</p> 
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title" style="color:#fff;">Materials' List</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Materials Management</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Materials' List</a>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<div class="d-flex align-items-center">
+										<h4 class="card-title" style="color:#48abf7;">Our Materials</h4>
+										<p style="color:red; margin-left:250px; margin-top:23px;"><b><span th:text="${pp}"></span></b></p>
+										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+											<i class="fa fa-plus"></i>
+											Add Material
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+									<!-- Modal -->
+									<div class="modal fade" id="addRowModal" tabindex="-1"
+										role="dialog" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header no-bd">
+													<h5 class="modal-title">
+														<span class="fw-mediumbold" style="color: blue;">
+															New Material</span>
+													</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<form th:action="@{/saveMateriel}" method="post">
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="form-group form-floating-label">
+																	<label for="pillInput" style="color:#575962;"><p style="color:#1a2035; margin-bottom: -5px;">Designation</p></label> <input 
+																		required type="text" class="form-control input-pill" style="background-color:transparent; color:black; border-color:blue;"
+																		name="designationMateriel"
+																		placeholder="Designation ...">
+																</div>
+															</div>
+															<div class="col-sm-12">
+																<div class="form-group ">
+																	<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">General Quantity</p></label> <input  style="background-color:transparent; color:black; border-color:blue;"
+																		required type="number" class="form-control input-pill"
+																		name="quantiteGeneraleMateriel"
+																		placeholder="General Quantity ...">
+																</div>
+															</div>
+															<div class="col-sm-12">
+																<div class="form-group form-floating-label">
+																	<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">About Material</p></label>
+																	<textarea class="form-control input-pill"  style="background-color:transparent; color:black; border-color:blue;"
+																		name="descriptionMateriel"
+																		placeholder="About Material ..." rows="5" cols="33"></textarea>
+																</div>
+															</div>
+															<div class="col-md-6 pr-0">
+																<div class="form-group form-floating-label">
+																	<label for="pillSelect"><p style="color:#1a2035; margin-bottom: -5px;">The Category</p></label> <select  style="background-color:transparent; color:black; border-color:blue;"
+																		class="form-control input-pill" id="cat"
+																		name="Categorie">
+																		<option value="" disabled selected="selected">
+																			Select The Category ...</option>
+																		<option th:each="m : ${categories}"
+																			th:value="${m.Categorie}" th:text="${m.Categorie}" />
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6 pr-0">
+																<div class="form-group form-floating-label">
+																	<label for="pillSelect"><p style="color:#1a2035; margin-bottom: -5px;">The Sub-Category</p></label> <select  style="background-color:transparent; color:black; border-color:blue;"
+																		class="form-control input-pill" id="souscat"
+																		name="sousCategorie">
+																		<option value="" disabled selected="selected">
+																			Select The Sub-Category ...</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer no-bd">
+															<button type="submit" id="addRowButton"
+																class="btn btn-primary btn-round">Add</button>
+															<button type="button"
+																class="btn btn-primary btn-border btn-round"
+																data-dismiss="modal">Close</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="table-responsive">
+										<table id="add-row" class="display table table-striped table-hover" >
+											<thead>
+												<tr>
+													<th style="color:#48abf7;">Designation</th>
+													<th style="color:#48abf7;">Available Quantity</th>
+													<th style="color:#48abf7;">General Quantity</th>
+													<th style="color:#48abf7;">Creation Date</th>
+													<th style="width: 10%;color:#48abf7;">Action</th>
+												</tr>
+											</thead>
+											<tfoot>
+												<tr>
+													<th style="color:#48abf7;">Designation</th>
+													<th style="color:#48abf7;">Available Quantity</th>
+													<th style="color:#48abf7;">General Quantity</th>
+													<th style="color:#48abf7;">Creation Date</th>
+													<th style="width: 10%;color:#48abf7;">Action</th>
+												</tr>
+											</tfoot>
+											<tbody>
+												<tr th:each="m:${Materiels}">
+													<td th:text="${m.designationMateriel}"></td>
+													<td th:text="${m.quantiteDisponibleeMateriel}"></td>
+													<td th:text="${m.quantiteGeneraleMateriel}"></td>
+													<td th:text="${m.dateCreationMateriel.getTime()}"></td>
+													<td>
+														<div class="form-button-action">
+															<button type="button" data-toggle="modal" title="Edit Material" class="btn btn-link  btn-lg" data-original-title="Edit Task" style="color:#1572e8;"
+															data-target="#editRowModal"  th:attrappend="data-target=${m.designationMateriel}">
+																<i class="fa fa-edit"></i>
+															</button>
+															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+																<a  th:href="@{/deleteMaterial(ref=${m.referenceMateriel})}"
+														 title="Edit" style="color:#f25961!important;"><i class="fa fa-times" id="alert_demo_8"> </a></i>
+															</button>
+															<div class="modal fade" id="editRowModal" tabindex="-1"
+																role="dialog" aria-hidden="true"
+																th:attrappend="id=${m.designationMateriel}">
+																<div class="modal-dialog" role="document">
+																	<div class="modal-content">
+																		<div class="modal-header no-bd">
+																			<h5 class="modal-title">
+																				<span class="fw-mediumbold" style="color: blue;">
+																					Edit Material</span>
+																			</h5>
+																			<button type="button" class="close"
+																				data-dismiss="modal" aria-label="Close">
+																				<span aria-hidden="true">&times;</span>
+																			</button>
+																		</div>
+																		<div class="modal-body">
+																			<form
+																				th:action="@{/editMateriel(id=${m.referenceMateriel})}"
+																				method="post">
+																				<div class="row">
+																					<div class="col-sm-12">
+																						<div class="form-group form-floating-label">
+																							<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">Designation</p></label> <input
+																								required type="text"
+																								class="form-control input-pill"
+																								name="designationMateriel"
+																								th:value="${m.designationMateriel}"
+																								placeholder="Designation ..." style="background-color:transparent; color:black; border-color:blue;">
+																						</div>
+																					</div>
+																					<div class="col-sm-6">
+																						<div class="form-group form-floating-label">
+																							<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">General Quantity</p></label> <input
+																								required type="number"
+																								class="form-control input-pill"
+																								th:value="${m.quantiteGeneraleMateriel}"
+																								name="quantiteGeneraleMateriel"
+																								placeholder="General Quantity ..." style="background-color:transparent; color:black; border-color:blue;">
+																						</div>
+																					</div>
+																					<div class="col-sm-6">
+																						<div class="form-group form-floating-label">
+																							<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">Available Quantity </p></label>
+																							<input required type="number"
+																								class="form-control input-pill"
+																								th:value="${m.quantiteDisponibleeMateriel}"
+																								name="quantiteDisponibleeMateriel"
+																								placeholder="General Quantity ..." style="background-color:transparent; color:black; border-color:blue;">
+																						</div>
+																					</div>
+																					<div class="col-sm-12">
+																						<div class="form-group form-floating-label">
+																							<label for="pillInput"><p style="color:#1a2035; margin-bottom: -5px;">About Material</p></label>
+																							<textarea class="form-control input-pill"
+																								name="descriptionMateriel"
+																								placeholder="About Material ..." rows="8"
+																								cols="33" th:text="${m.descriptionMateriel}" style="background-color:transparent; color:black; border-color:blue;"></textarea>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="modal-footer no-bd">
+																					<button type="submit" id="editRowButton"
+																						class="btn btn-primary btn-round">Edit</button>
+																					<button type="button"
+																						class="btn btn-primary btn-border btn-round"
+																						data-dismiss="modal">Close</button>
+																				</div>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+				<div class="copyright ml-auto">
+						 SmartLockerAPP, made with <i class="fa fa-heart heart text-danger"></i> by <a
+							href="">Rania BOLTANE and Aya HAMDI</a>
+					</div>				
+				</div>
+			</footer>
+		</div>
+	</div>
+	<!--   Core JS Files   -->
+	<script src="../js/core/jquery.3.2.1.min.js"></script>
+	<script src="../js/core/popper.min.js"></script>
+	<script src="../js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="../js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../js/plugin/datatables/datatables.min.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../js/setting-demo2.js"></script>
+	<script >
+		$(document).ready(function() {
+
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 7,
+			});
+
+		});
+	</script>
+		<script th:inline="javascript">
+		//First material
+		$(document)
+				.ready(
+						function() {
+							$('#cat')
+									.change(
+											function() {
+												console.log("hereeee1");
+												$
+														.getJSON(
+																"http://localhost:8082/ajouter_emprunt/sousCategories",
+																{
+																	Categorie : $(
+																			this)
+																			.val(),
+																	ajax : 'true'
+																},
+																function(data) {
+																	var html = '<option value="" disabled selected="selected"> Select The Sub-Category ...</option>';
+																	var len = data.length;
+																	for (var i = 0; i < len; i++) {
+																		html += '<option value="' + data[i].sousCategorie + '">'
+																				+ data[i].sousCategorie
+																				+ '</option>';
+																	}
+																	html += '</option>';
+
+																	$(
+																			'#souscat')
+																			.html(
+																					html);
+																});
+											});
+						});
+	</script>
+
+	<script src="../js/plugin/sweetalert/sweetalert.min.js"></script>
+</body>
+</html>

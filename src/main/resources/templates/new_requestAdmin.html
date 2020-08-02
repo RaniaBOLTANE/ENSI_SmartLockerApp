@@ -1,0 +1,510 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf- extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>New Request - SmartLocker</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" href="../img/icon.ico" type="image/x-icon" />
+
+<!-- Fonts and icons -->
+<script src="../js/plugin/webfont/webfont.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	WebFont.load({
+		google : {
+			"families" : [ "Lato:300,400,700,900" ]
+		},
+		custom : {
+			"families" : [ "Flaticon", "Font Awesome 5 Solid",
+					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
+					"simple-line-icons" ],
+			urls : [ '../css/fonts.min.css' ]
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
+<script th:inline="javascript">
+	//First material
+	$(document)
+			.ready(
+					function() {
+						$('#mat1')
+								.change(
+										function() {
+											$
+													.getJSON(
+															"http://localhost:8082/materiel/quatite",
+															{
+																materiel : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<label for="pillInput">Quantity</label> ';
+																html += '<input '
+																+'id="quantite1" name="quantitep" '
+																+'class="form-control input-pill" '
+																+'placeholder="Number of Items"  min="0" max="4"  value="'+data.quantiteDisponibleeMateriel+'" >';
+																$('#quantite11')
+																		.html(
+																				html);
+															});
+										});
+					});
+	//Second material
+	$(document)
+			.ready(
+					function() {
+						$('#mat2')
+								.change(
+										function() {
+											$
+													.getJSON(
+															"http://localhost:8082/materiel/quatite",
+															{
+																materiel : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<label for="pillInput">Quantity</label> ';
+																html += '<input '
+														+'id="quantite1" name="quantited" '
+														+'class="form-control input-pill" '
+														+'placeholder="Number of Items"  min="0" max="4"  value="'+data.quantiteDisponibleeMateriel+'" >';
+																$('#quantite22')
+																		.html(
+																				html);
+															});
+										});
+					});
+	//Third material
+	$(document)
+			.ready(
+					function() {
+						$('#mat3')
+								.change(
+										function() {
+											$
+													.getJSON(
+															"http://localhost:8082/materiel/quatite",
+															{
+																materiel : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<label for="pillInput">Quantity</label> ';
+																html += '<input '
+														+'id="quantite1" name="quantitet" '
+														+'class="form-control input-pill" '
+														+'placeholder="Number of Items"  min="0" max="4"  value="'+data.quantiteDisponibleeMateriel+'" >';
+																$('#quantite33')
+																		.html(
+																				html);
+															});
+										});
+					});
+	//Forth material
+	$(document)
+			.ready(
+					function() {
+						$('#mat4')
+								.change(
+										function() {
+											$
+													.getJSON(
+															"http://localhost:8082/materiel/quatite",
+															{
+																materiel : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<label for="pillInput">Quantity</label> ';
+																html += '<input '
+														+'id="quantite1" name="quantiteq" '
+														+'class="form-control input-pill" '
+														+'placeholder="Number of Items"  min="0" max="4"  value="'+data.quantiteDisponibleeMateriel+'" >';
+																$('#quantite44')
+																		.html(
+																				html);
+															});
+										});
+					});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/atlantis.min.css">
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../css/demo.css">
+</head>
+<body data-background-color="dark">
+	<div class="wrapper sidebar_minimize">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="blue">
+
+				<a href="../index.html" class="logo"> <img src="../img/smartlocker.png"
+					alt="navbar brand" class="navbar-brand">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button"
+					data-toggle="collapse" data-target="collapse" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"> <i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more">
+					<i class="icon-options-vertical"></i>
+				</button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg"
+				data-background-color="blue">
+				<div class="container-fluid">
+					<div class="collapse" id="search-nav">
+						<form class="navbar-left navbar-form nav-search mr-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pr-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input type="text" placeholder="Search ..." class="form-control">
+							</div>
+						</form>
+					</div>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item toggle-nav-search hidden-caret"><a
+							class="nav-link" data-toggle="collapse" href="#search-nav"
+							role="button" aria-expanded="false" aria-controls="search-nav">
+								<i class="fa fa-search"></i>
+						</a></li>
+						<li class="nav-item dropdown hidden-caret"><a
+							class="dropdown-toggle profile-pic" data-toggle="dropdown"
+							href="#" aria-expanded="false">
+								<div class="avatar-sm">
+									<img src="../img/ar.jpeg" alt="..."
+										class="avatar-img rounded-circle">
+								</div>
+						</a></li>
+					</ul>
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+		<!-- Sidebar -->
+				<div class="sidebar"  data-background-color="dark2">			
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+				<div class="user">
+						<div class="avatar-sm float-left mr-2">
+							<img src="../img/logo.jpg" alt="..." class="avatar-img rounded-circle">
+						</div>
+						<div class="info">
+							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span th:text="${nom}"></span>
+									
+									<span
+									class="user-level">Administrator</span>
+									<span class="caret"></span>
+								
+							</a>
+							<div class="clearfix"></div>
+
+							<div class="collapse in" id="collapseExample">
+								<ul class="nav">
+									<li>
+										<a th:href="@{/user_profile}">
+											<span class="link-collapse">Edit Profile</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/user_card}">
+											<span class="link-collapse">My Card</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<ul class="nav nav-primary">
+						<li class="nav-item active"><a 
+							th:href="@{/indexAdmin}" class="collapsed" aria-expanded="false"> <i
+								class="fas fa-home"></i>
+								<p>Our Materials</p>
+						</a></li>
+						<li class="nav-section"><span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+						</span>
+							<h4 class="text-section">Actions</h4></li>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-shopping-basket"></i>
+								<p>Borrowing Management</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									<li>
+										<a th:href="@{/new_borrowing}">
+											<span class="sub-item">New Borrowing</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/return_materialAdmin}">
+											<span class="sub-item">Return Materials</span>
+										</a>
+									</li>
+									<li>
+										<a th:href="@{/new_requestAdmin}">
+											<span class="sub-item">Request Material</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item "><a 
+							th:href="@{/lock}" > <i class="fas fa-minus-square"></i>
+								<p>Locker State</p> 
+						</a></li>
+						<li class="nav-item"><a 
+							th:href="@{/materials_list}" > <i class="fas fa-th"></i>
+								<p>Material Management</p> 
+						</a></li>
+						<li class="nav-item"><a  th:href="@{/users_list}">
+								<i class=" fas fa-users"></i>
+								<p>User Management</p> 
+						</a></li>
+						<li class="nav-item"><a th:href="@{/borrowing_list}">
+								<i class="fas fa-list-alt"></i>
+								<p>Borrowing List</p> 
+						</a></li>
+						<li class="nav-item"><a th:href="@{/returned_materials}">
+								<i class="fas fa-layer-group"></i>
+								<p>Returned Materials List</p>
+						</a></li>
+						<li class="nav-item"><a th:href="@{/paniers_users}">
+								<i class="fas fa-shopping-cart"></i>
+								<p>Carts' List</p>
+						</a></li>
+							<li class="nav-item"><a th:href="@{/demandes_list}">
+								<i class="fas fa-tasks"></i>
+								<p>Requests List</p> 
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title" style="color: #fff;">New Request</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home"><a href="#"> <i
+									class="flaticon-home"></i>
+							</a></li>
+							<li class="separator"><i class="flaticon-right-arrow"></i></li>
+							<li class="nav-item"><a href="#">New Request</a></li>
+						</ul>
+					</div>
+					<form th:action="@{/saveRequest}" method="post">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title" style="color: #48abf7;">Your
+											session</div>
+									</div>
+									<div class="card-body">
+										<div class="row">
+
+											<div class="col-md-6 col-lg-4">
+
+
+												<div class="form-group form-floating-label">
+													<label for="pillInput">E-mail Address</label> <input
+														type="text" class="form-control input-pill" id="pillInput"
+														style="color: #1a2035; font-weight: bold;" name="email"
+														placeholder="Pill Input" th:value="${email}" readonly>
+												</div>
+											</div>
+										</div>
+
+										<hr width="90%" style="color: #fff;">
+
+										<div class="row">
+
+											<div class="col-md-6 col-lg-3">
+												<label class="mt-3 mb-3"><b style="color: #48abf7;">First
+														Material</b></label>
+
+												<div class="form-group form-floating-label">
+													<label style="color: #48abf7;">Material Designation</label>
+													<select class="form-control input-pill" id="mat1"
+														name="materielp">
+														<option value="" disabled selected="selected">
+															Select The Material ...</option>
+														<option th:each="m : ${materials}"
+															th:value="${m.designationMateriel}"
+															th:text="${m.designationMateriel}" />
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<br> <label class="mt-3 mb-3"><b></b></label>
+
+												<div class="form-group form-floating-label" id="quantite11">
+													<label for="pillSelect">Quantity</label> <input min="0"
+														max="4" type="number" class="form-control input-pill"
+														id="quantite1" name="quantitep"
+														placeholder="Number of Items">
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<label class="mt-3 mb-3"><b style="color: #48abf7;">Second
+														Material</b></label>
+
+												<div class="form-group form-floating-label">
+													<label style="color: #48abf7;">Material Designation</label>
+													<select class="form-control input-pill" id="mat2"
+														name="materield">
+														<option value="" disabled selected="selected">
+															Select The Material ...</option>
+														<option th:each="m : ${materials}"
+															th:value="${m.designationMateriel}"
+															th:text="${m.designationMateriel}" />
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<br> <label class="mt-3 mb-3"><b></b></label>
+
+												<div class="form-group form-floating-label" id="quantite22">
+													<label for="pillSelect">Quantity</label> <input min="0"
+														max="4" type="number" class="form-control input-pill"
+														id="quantite2" name="quantited"
+														placeholder="Number of Items">
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+
+											<div class="col-md-6 col-lg-3">
+												<label class="mt-3 mb-3"><b style="color: #48abf7;">Third
+														Material</b></label>
+
+												<div class="form-group form-floating-label">
+													<label style="color: #48abf7;">Material Designation</label>
+													<select class="form-control input-pill" id="mat3"
+														name="materielt">
+														<option value="" disabled selected="selected">
+															Select The Material ...</option>
+														<option th:each="m : ${materials}"
+															th:value="${m.designationMateriel}"
+															th:text="${m.designationMateriel}" />
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<br> <label class="mt-3 mb-3"><b></b></label>
+
+												<div class="form-group form-floating-label" id="quantite44">
+													<label for="pillSelect">Quantity</label> <input min="0"
+														max="4" type="number" class="form-control input-pill"
+														id="quantite4" name="quantiteq"
+														placeholder="Number of Items">
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<label class="mt-3 mb-3"><b style="color: #48abf7;">Forth
+														Material</b></label>
+
+												<div class="form-group form-floating-label">
+													<label style="color: #48abf7;">Material Designation</label>
+													<select class="form-control input-pill" id="mat4"
+														name="materielq">
+														<option value="" disabled selected="selected">
+															Select The Material ...</option>
+														<option th:each="m : ${materials}"
+															th:value="${m.designationMateriel}"
+															th:text="${m.designationMateriel}" />
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6 col-lg-3">
+												<br> <label class="mt-3 mb-3"><b></b></label>
+
+												<div class="form-group form-floating-label" id="quantite44">
+													<label for="pillSelect">Quantity</label> <input min="0"
+														max="4" type="number" class="form-control input-pill"
+														id="quantite4" name="quantiteq"
+														placeholder="Number of Items">
+												</div>
+											</div>
+										</div>
+
+									</div>
+									<div class="card-action">
+										<div style="margin-left: 70%;">
+											<button class="btn btn-primary btn-round" type="submit">Save
+												Request</button>
+											<button class="btn btn-primary btn-border btn-round"
+												type="reset">Cancel</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="copyright ml-auto">
+						SmartLockerAPP, made with <i class="fa fa-heart heart text-danger"></i>
+						by <a href="">Rania BOLTANE and Aya HAMDI</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<!--   Core JS Files   -->
+	<script src="../js/core/jquery.3.2.1.min.js"></script>
+	<script src="../js/core/popper.min.js"></script>
+	<script src="../js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script
+		src="../js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="../js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../js/setting-demo2.js"></script>
+</body>
+</html>
